@@ -43,3 +43,7 @@
 /www/default/memcached-admin/Temp/.version
 /www/default/memcached-admin/Temp/latest
 /www/default/memcached-admin/Temp/live_stats.*
+
+#archivos jose
+00_materiales/*
+.gitignore
