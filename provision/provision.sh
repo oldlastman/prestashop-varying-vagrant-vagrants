@@ -290,23 +290,6 @@ mysql -u root -pblank < /srv/database/init.sql | echo "Initial MySQL prep...."
 #ln -sf /srv/www/wp-cli/bin/wp /usr/local/bin/wp
 
 # Install and configure the latest stable version of Prestashop
-if [ ! -d /srv/www/wordpress-default ]
-then
-	printf "Downloading WordPress.....http://wordpress.org\n"
-	cd /srv/www/
-	curl -O http://wordpress.org/latest.tar.gz
-	tar -xvf latest.tar.gz
-	mv wordpress wordpress-default
-	rm latest.tar.gz
-	cd /srv/www/wordpress-default
-	printf "Configuring WordPress...\n"
-	wp core config --dbname=wordpress_default --dbuser=wp --dbpass=wp --quiet --extra-php <<PHP
-define( "WP_DEBUG", true );
-PHP
-	wp core install --url=local.wordpress.dev --quiet --title="Local WordPress Dev" --admin_name=admin --admin_email="admin@local.dev" --admin_password="password"
-else
-	printf "Skip WordPress installation, already available\n"
-fi
 
 if [ ! -d /srv/www/prestashop ]
 then
