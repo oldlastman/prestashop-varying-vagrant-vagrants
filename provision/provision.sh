@@ -289,7 +289,7 @@ mysql -u root -pblank < /srv/database/init.sql | echo "Initial MySQL prep...."
 # Link `wp` to the `/usr/local/bin` directory
 #ln -sf /srv/www/wp-cli/bin/wp /usr/local/bin/wp
 
-# Install and configure the latest stable version of WordPress
+# Install and configure the latest stable version of Prestashop
 if [ ! -d /srv/www/wordpress-default ]
 then
 	printf "Downloading WordPress.....http://wordpress.org\n"
@@ -306,6 +306,17 @@ PHP
 	wp core install --url=local.wordpress.dev --quiet --title="Local WordPress Dev" --admin_name=admin --admin_email="admin@local.dev" --admin_password="password"
 else
 	printf "Skip WordPress installation, already available\n"
+fi
+
+if [ ! -d /srv/www/prestashop ]
+then
+	printf "\nDownloading prestashop.....http://github.com/PrestaShop/\n"
+	git clone git://github.com/PrestaShop/PrestaShop.git /srv/www/prestashop
+else
+	printf "Skip Prestashop installation, already available\n"
+#	printf "\nUpdating prestashop....\n"
+#	cd /srv/www/prestashop
+#	git pull --rebase origin master
 fi
 
 # Checkout, install and configure WordPress trunk
