@@ -199,6 +199,7 @@ printf "\nLink Directories...\n"
 
 # Configuration for nginx
 ln -sf /srv/config/nginx-config/nginx.conf /etc/nginx/nginx.conf | echo "Linked nginx.conf to /etc/nginx/"
+# todo: remove
 #ln -sf /srv/config/nginx-config/nginx-wp-common.conf /etc/nginx/nginx-wp-common.conf | echo "Linked nginx-wp-common.conf to /etc/nginx/"
 
 # Configuration for php5-fpm
@@ -273,19 +274,20 @@ mysql -u root -pblank < /srv/database/init.sql | echo "Initial MySQL prep...."
 /srv/database/import-sql.sh
 
 # WP-CLI Install
-if [ ! -d /srv/www/wp-cli ]
-then
-	printf "\nDownloading wp-cli.....http://wp-cli.org\n"
-	git clone git://github.com/wp-cli/wp-cli.git /srv/www/wp-cli
-	cd /srv/www/wp-cli
-	composer install
-else
-	printf "\nUpdating wp-cli....\n"
-	cd /srv/www/wp-cli
-	git pull --rebase origin master
-fi
+# todo: remove
+#if [ ! -d /srv/www/wp-cli ]
+#then
+#	printf "\nDownloading wp-cli.....http://wp-cli.org\n"
+#	git clone git://github.com/wp-cli/wp-cli.git /srv/www/wp-cli
+#	cd /srv/www/wp-cli
+#	composer install
+#else
+#	printf "\nUpdating wp-cli....\n"
+#	cd /srv/www/wp-cli
+#	git pull --rebase origin master
+#fi
 # Link `wp` to the `/usr/local/bin` directory
-ln -sf /srv/www/wp-cli/bin/wp /usr/local/bin/wp
+#ln -sf /srv/www/wp-cli/bin/wp /usr/local/bin/wp
 
 # Install and configure the latest stable version of WordPress
 if [ ! -d /srv/www/wordpress-default ]
