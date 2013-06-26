@@ -302,21 +302,15 @@ else
 #	git pull --rebase origin master
 fi
 
-# Checkout, install and configure WordPress trunk
-if [ ! -d /srv/www/wordpress-trunk ]
+# Checkout, install and configure Prestashop develop
+if [ ! -d /srv/www/prestashop-development ]
 then
-	printf "Checking out WordPress trunk....http://core.svn.wordpress.org/trunk\n"
-	svn checkout http://core.svn.wordpress.org/trunk/ /srv/www/wordpress-trunk
-	cd /srv/www/wordpress-trunk
-	printf "Configuring WordPress trunk...\n"
-	wp core config --dbname=wordpress_trunk --dbuser=wp --dbpass=wp --quiet --extra-php <<PHP
-define( "WP_DEBUG", true );
-PHP
-	wp core install --url=local.wordpress-trunk.dev --quiet --title="Local WordPress Trunk Dev" --admin_name=admin --admin_email="admin@local.dev" --admin_password="password"
+	printf "\nDownloading prestashop.....http://github.com/PrestaShop/\n"
+	git clone git://github.com/PrestaShop/PrestaShop.git -b development /srv/www/prestashop-development
 else
-	printf "Updating WordPress trunk...\n"
-	cd /srv/www/wordpress-trunk
-	svn up --ignore-externals
+	printf "\nUpdating prestashop-develop....\n"
+	cd /srv/www/prestashop-development
+	git pull --rebase origin development
 fi
 
 # Checkout and configure the WordPress unit tests
