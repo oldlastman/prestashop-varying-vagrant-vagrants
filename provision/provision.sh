@@ -295,7 +295,7 @@ if [ ! -d /srv/www/prestashop ]
 then
 	printf "\nDownloading prestashop.....http://github.com/PrestaShop/\n"
 	git clone git://github.com/PrestaShop/PrestaShop.git /srv/www/prestashop
-	php /srv/www/prestashop/dev-install/install_cli.php --domain=local.prestashop.dev --db_server=localhost --db_name=prestashop_default --db_user=prestashop --db_password=prestashop
+	php /srv/www/prestashop/install-dev/install_cli.php --domain=local.prestashop.dev --db_server=localhost --db_name=prestashop_default --db_user=prestashop --db_password=prestashop
 else
 	printf "Skip Prestashop installation, already available\n"
 #	printf "\nUpdating prestashop....\n"
