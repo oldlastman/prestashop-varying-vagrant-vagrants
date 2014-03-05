@@ -298,9 +298,9 @@ then
 	php /srv/www/prestashop/install-dev/index_cli.php --domain=local.prestashop.dev --db_server=localhost --db_name=prestashop_default --db_user=prestashop --db_password=prestashop
 else
 	printf "Skip Prestashop installation, already available\n"
-#	printf "\nUpdating prestashop....\n"
-#	cd /srv/www/prestashop
-#	git pull --rebase origin master
+	printf "\nUpdating prestashop....\n"
+	cd /srv/www/prestashop
+	git pull --rebase origin master
 fi
 
 # Checkout, install and configure Prestashop develop
