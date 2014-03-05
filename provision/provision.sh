@@ -307,11 +307,11 @@ fi
 if [ ! -d /srv/www/prestashop-development ]
 then
 	printf "\nDownloading prestashop.....http://github.com/PrestaShop/\n"
-	git clone git://github.com/PrestaShop/PrestaShop.git -b development /srv/www/prestashop-development
+	git clone git://github.com/PrestaShop/PrestaShop.git -b 1.6 /srv/www/prestashop-development
 else
 	printf "\nUpdating prestashop-develop....\n"
 	cd /srv/www/prestashop-development
-	git pull --rebase origin development
+	git pull --rebase origin 1.6
 fi
 
 
@@ -339,4 +339,4 @@ fi
 end_seconds=`date +%s`
 echo -----------------------------
 echo Provisioning complete in `expr $end_seconds - $start_seconds` seconds
-echo For further setup instructions, visit http://192.168.50.4
+echo For further setup instructions, visit http://192.168.50.5
